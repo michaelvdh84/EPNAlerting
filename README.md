@@ -49,7 +49,7 @@ Set the following environment variables in Azure (Configuration > Application se
 Event: WebsiteUnreachable
 Site: https://www.dontcrybabyyouredead.be/
 Reason: No such host is known. (www.dontcrybabyyouredead.be:443)
-Machine: WS107972
+Machine: MyMachine
 ```
 
 ## Troubleshooting
@@ -57,5 +57,4 @@ Machine: WS107972
 - Ensure all environment variables are set
 - Verify SendGrid and Application Insights API keys
 
-## License
-MIT
+
