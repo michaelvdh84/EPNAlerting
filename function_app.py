@@ -8,6 +8,15 @@ app = func.FunctionApp()
 # Handler pour le webhook d'alerte
 @app.route(route="AlertHandler", methods=["POST"])
 async def alert_handler(req: func.HttpRequest) -> func.HttpResponse:
+    # Vérification du token secret transmis en paramètre d'URL
+    import os
+    expected_token = os.environ.get("WEBHOOK_TOKEN")
+    received_token = req.params.get("token")
+
+    if not expected_token or received_token != expected_token:
+        logging.warning("Tentative d'accès non autorisée au Webhook.")
+        return func.HttpResponse("Unauthorized", status_code=401)
+        
     try:
         # Récupérer le payload JSON
         data = req.get_json()
