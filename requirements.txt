@@ -5,3 +5,4 @@
 azure-functions
 # Pour l'envoi d'emails via SendGrid
 sendgrid
+requests
