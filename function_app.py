@@ -113,9 +113,10 @@ async def alert_handler(req: func.HttpRequest) -> func.HttpResponse:
         logging.error("SENDGRID_API_KEY ou TO_EMAIL non défini dans les variables d'environnement.")
         return func.HttpResponse("Configuration SendGrid manquante.", status_code=500)
 
+    to_emails = [email.strip() for email in TO_EMAIL.split(",")]
     message = Mail(
         from_email=FROM_EMAIL,
-        to_emails=TO_EMAIL,
+        to_emails=to_emails,
         subject="EPNMonitoring Alert",
         html_content=html_content
     )
